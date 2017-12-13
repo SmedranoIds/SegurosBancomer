@@ -117,7 +117,6 @@ get_header(); ?>
 				      <h4 class="panel-title">
 				        <a  class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
 				          Condiciones Generales
-				        	
 				        </a>
 				      </h4>
 				    </div>
@@ -128,8 +127,18 @@ get_header(); ?>
 							if( have_rows('archivos') ):
 							  while ( have_rows('archivos') ) : the_row();
 							?>
+							<p class="whitSpace"><strong><?php the_sub_field('tituloapartados') ?></strong></p>
 				        	<p class="whitSpace"><?php the_sub_field('apartados') ?></p>
-				        	<li class="icon-pdf"><a href="<?php the_sub_field('urlarchivo') ?>"><?php the_sub_field('titulo') ?></a></li>
+				        		<?php 
+								if( have_rows('pdf') ):
+								  while ( have_rows('pdf') ) : the_row();
+								?>
+				        			<li class="icon-pdf"><a href="<?php the_sub_field('urlarchivo') ?>"><?php the_sub_field('titulo') ?></a></li>
+				        		<?php
+								endwhile;
+								endif;
+								?>
+								<br>
 				        	<?php
 							endwhile;
 							endif;
