@@ -478,6 +478,7 @@ li.icon-pdf:before{
     opacity: 1;
 }
 /*Modales*/
+/*content*/
 .glyphicon {
     font-size: 14px;
 }
@@ -495,7 +496,13 @@ li.icon-pdf:before{
 .panel-heading a.collapsed:after {
     content: url(http://localhost/wp-content/uploads/2017/12/open.png);
 }
-
+.sinEst{
+  list-style: none;
+}
+.spaceAnio{
+  padding-right: 25px;
+}
+/*content*/
 /*responsive*/
 @media (max-width: 992px){
   .outBlockG {

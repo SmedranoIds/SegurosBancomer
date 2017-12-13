@@ -41,7 +41,7 @@ get_header(); ?>
 								<a href="<?php the_field('urlboton') ?>"><button class="btn-primary boton-azul2">Cotiza ahora</button></a>
 							</div>
 							<div class="col-md-6 col-xs-12 text-center">
-								<img src="http://localhost/wp-content/uploads/2017/12/7-Seguro-de-Vida-Bancomer-OKS_tcm1004-383368.png", class="imgResp" alt="">
+								<img src="<?php the_post_thumbnail_url(); ?>", class="imgResp" alt="">
 							</div>
 						</div>
 						<div class="col-md-4 col-xs-12">
@@ -89,27 +89,55 @@ get_header(); ?>
 		<div class="row">
 			<div class="col-md-8 datosSeguro">
 				<?php 
+				$a = 0;
 				if( have_rows('informacion') ):
 				  while ( have_rows('informacion') ) : the_row(); 
 				?>
 				  <div class="panel panel-default">
-				    <div class="panel-heading" role="tab" id="headingOne">
+				    <div class="panel-heading" role="tab" id="heading<?php echo $a ?>">
 				      <h4 class="panel-title">
-				        <a class="benef" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+				        <a class="<?php if($a != 0){?> collapsed <?php } ?>" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse<?php echo $a ?>" aria-expanded="true" aria-controls="collapse<?php echo $a ?>">
 				          <?php the_sub_field('titulo') ?>
 				        </a>
 				      </h4>
 				    </div>
-				    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+				    <div id="collapse<?php echo $a ?>" class="panel-collapse collapse <?php if($a === 0){?> in <?php } ?>" role="tabpanel" aria-labelledby="heading<?php echo $a ?>">
 				      <div class="panel-body">
 				        <?php the_sub_field('contenido') ?>
 				      </div>
 				    </div>
 				  </div>
 				  <?php
+				  	$a++;
 					endwhile;
 					endif;
 					?>
+				<div class="panel panel-default">
+				    <div class="panel-heading" role="tab" id="headingFive">
+				      <h4 class="panel-title">
+				        <a  class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+				          Condiciones Generales
+				        	
+				        </a>
+				      </h4>
+				    </div>
+				    <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+				      <div class="panel-body">
+				        <ul>
+				        	<?php 
+							if( have_rows('archivos') ):
+							  while ( have_rows('archivos') ) : the_row();
+							?>
+				        	<p class="whitSpace"><?php the_sub_field('apartados') ?></p>
+				        	<li class="icon-pdf"><a href="<?php the_sub_field('urlarchivo') ?>"><?php the_sub_field('titulo') ?></a></li>
+				        	<?php
+							endwhile;
+							endif;
+							?>
+				        </ul>
+				      </div>
+				    </div>
+				</div>
 				<div class="panel panel-default">
 				    <div class="panel-heading" role="tab" id="headingSix">
 				      <h4 class="panel-title">
@@ -121,30 +149,17 @@ get_header(); ?>
 				    </div>
 				    <div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSix">
 				      <div class="panel-body">
-				      	<h3>¿Cuál es el objetivo de FamiliaSegura Bancomer?</h3>
-				      	<p>Que tu familia cuente con los recursos necesarios para continuar con su nivel de vida si llegaras a faltar.</p>
+				      	<?php 
+							if( have_rows('preguntas') ):
+							  while ( have_rows('preguntas') ) : the_row();
+							?>
+				      	<h3><?php the_sub_field('pregunta') ?></h3>
+				      	<p><?php the_sub_field('respuesta') ?></p>
 
-				      	<h3>¿Cómo puedo saber cuánto necesito de renta asegurada?</h3>
-				      	<p>Tú decides cuánto es lo que tu beneficiario va a necesitar en caso de que tú faltes. Una forma de encontrar esa cantidad es sumar todos tus gastos comunes relacionados con el mantenimiento y gasto de tu hogar.</p>
-
-				      	<h3>¿Qué diferencia existe entre FamiliaSegura Bancomer y VidaSegura Bancomer?</h3>
-				      	<p>La principal diferencia se encuentra en la indemnización. Mientras que en VidaSegura Bancomer se entrega la Suma Asegurada contratada en una sola exhibición, en FamiliaSegura Bancomer se entregan rentas mensuales de acuerdo al plazo contratado.</p>
-				        
-				        <h3>¿Qué descuentos ofrece?</h3>
-						<p>Al adquirir FamiliaSegura Bancomer podrás obtener descuentos adicionales por compra múltiple y por forma de pago.</p>
-
-						<h3>¿Qué debo hacer para realizar cambios en mi póliza?</h3>
-						<p>Para cualquier cambio o información sobre tu Póliza debes llamar al Centro de Servicio al Cliente, asesoría personalizada de lunes a viernes de 8:30 a 19:00 hrs. D.F. y zona metropolitana: 1102 0000. Desde el interior de la república: (01 55) 1102 0000. Desde celular: (55) 1102 0000.</p>
-
-						<h3>¿Qué deben de hacer mis beneficiarios para reclamar el seguro?</h3>
-						<p>Comunicarse lo antes posible con Cabina de Siniestros de Seguros Bancomer al 01800 URGENTE (01800 874 36 83) donde te proporcionaremos la información necesaria para llevar a cabo tu reclamación.</p>
-
-						<h3>¿Puedo tener más de una póliza?</h3>
-						<p>Sí, siempre que no rebase en conjunto el límite permitido por Seguros Bancomer, que es de $30,000 pesos de renta asegurada mensual.</p>
-
-						<h3>¿Cuánto me cuesta?</h3>
-						<p>La prima mensual que tú pagas depende de diferentes factores a considerar: edad, peso, estatura y el padecimiento de ciertas enfermedades que se describen en tu solicitud, así como el tipo de renta asegurada que deseas.</p>
-
+				      	<?php
+						endwhile;
+						endif;
+						?>
 				      </div>
 				    </div>
 				</div>
