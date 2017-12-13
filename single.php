@@ -33,12 +33,14 @@ get_header(); ?>
 								<a href=""> Vida y Familia</a>
 								<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
 								<a href=""><?php the_title(); ?></a>
-								<h1 class="titulo"></h1>
+								<h1 class="titulo"><?php the_title(); ?></h1>
 							</div>
 							<div class="col-md-5 col-xs-12">
 								<p class="descripcion"><?php the_field('descripcion'); ?></p>
 								<br>
-								<a href="<?php the_field('urlboton') ?>"><button class="btn-primary boton-azul2">Cotiza ahora</button></a>
+								<?php if(get_field('urlboton')): ?>
+									<a href="<?php the_field('urlboton') ?>"><button class="btn-primary boton-azul2">Cotiza ahora</button></a>
+								<?php endif; ?>
 							</div>
 							<div class="col-md-6 col-xs-12 text-center">
 								<img src="<?php the_post_thumbnail_url(); ?>", class="imgResp" alt="">
