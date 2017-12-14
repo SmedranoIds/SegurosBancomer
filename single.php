@@ -30,7 +30,7 @@ get_header(); ?>
 							<div class="col-md-12">
 								<a href="https://www.segurosbancomer.com.mx/seguros/tleu/segurosban/index.jsp">Seguros </a>
 								<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-								<a href=""> Vida y Familia</a>
+								<a href="<?php the_field('parenturl'); ?>"> <?php the_field('parent'); ?></a>
 								<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
 								<a href=""><?php the_title(); ?></a>
 								<h1 class="titulo"><?php the_title(); ?></h1>
@@ -87,7 +87,7 @@ get_header(); ?>
 				</div>
 			</div>
 
-			<div class="container separador">
+	<div class="container separador">
 		<div class="row">
 			<div class="col-md-8 datosSeguro">
 				<?php 

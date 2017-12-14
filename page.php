@@ -221,6 +221,28 @@ get_header(); ?>
 			</div>
 			<?php endif; ?>
 		</div>
+		<div class="container separador">
+		<div class="row">
+			<div class="col-md-8 lista">
+				<div class="panel panel-default">
+					  <div class="panel-body">
+					  	<h2>AutoAlerta Bancomer</h2>
+					  	<div class="row">
+					  		<div class="col-md-8 col-sm-8">
+							  	<p>Conoce AutoAlerta Bancomer, tu seguro de Auto con un solo clic.</p>
+					  		</div>
+					  		<div class="col-md-4 col-sm-4 text-center">
+					  			<a class="cuadro", href="">
+							  		Detalle del producto
+							  		<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+								</a>
+					  		</div>
+					  	</div>
+					  </div>
+				</div>
+			</div>
+		</div>
+		</div>	
 	</div>
 		<?php
 		// End the loop.
