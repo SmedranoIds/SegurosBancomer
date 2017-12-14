@@ -56,11 +56,11 @@ get_header(); ?>
 							  	
 							  </div>
 							</div>
-							<?php 
+							<?php
 							if( have_rows('cuadroblanco') ):
 							  while ( have_rows('cuadroblanco') ) : the_row(); 
 							?>
-							<div class="panel panel-default">
+							<div class="panel panel-default <?php the_sub_field('clase') ?>">
 							  <div class="panel-body bordeCuadros">
 							  	<h2><?php the_sub_field('titulocuadro') ?></h2>
 							  	<div class="row">
