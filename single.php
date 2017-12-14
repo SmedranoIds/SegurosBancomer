@@ -72,10 +72,13 @@ get_header(); ?>
 							  			<img class="imgCuadros", src="<?php the_sub_field('img') ?>" alt="">
 							  		</div>
 							  	</div>
-							  	<a class="cuadro", href="<?php the_sub_field('ligaproducto') ?>">
-							  		<?php the_sub_field('leyendaurl') ?>
-							  		<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-								</a>
+							  	<?php if( get_sub_field('ligaproducto') ): ?>
+								  	<a class="cuadro", href="<?php the_sub_field('ligaproducto') ?>">
+								  		<?php the_sub_field('leyendaurl') ?>
+								  		<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+								  		
+									</a>
+								<?php endif; ?>
 							  </div>
 							</div>
 							<?php
