@@ -114,67 +114,70 @@ get_header(); ?>
 					endwhile;
 					endif;
 					?>
-				<div class="panel panel-default">
-				    <div class="panel-heading" role="tab" id="headingFive">
-				      <h4 class="panel-title">
-				        <a  class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
-				          Condiciones Generales
-				        </a>
-				      </h4>
-				    </div>
-				    <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
-				      <div class="panel-body">
-				        <ul>
-				        	<?php 
-							if( have_rows('archivos') ):
-							  while ( have_rows('archivos') ) : the_row();
-							?>
-							<p class="whitSpace"><strong><?php the_sub_field('tituloapartados') ?></strong></p>
-				        	<p class="whitSpace"><?php the_sub_field('apartados') ?></p>
-				        		<?php 
-								if( have_rows('pdf') ):
-								  while ( have_rows('pdf') ) : the_row();
+				<?php if( have_rows('archivos') ): ?>
+					<div class="panel panel-default">
+					    <div class="panel-heading" role="tab" id="headingFive">
+					      <h4 class="panel-title">
+					        <a  class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+					          Condiciones Generales
+					        </a>
+					      </h4>
+					    </div>
+					    <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+					      <div class="panel-body">
+					        <ul>
+					        	<?php 
+								if( have_rows('archivos') ):
+								  while ( have_rows('archivos') ) : the_row();
 								?>
-				        			<li class="icon-pdf"><a href="<?php the_sub_field('urlarchivo') ?>"><?php the_sub_field('titulo') ?></a></li>
-				        		<?php
+								<p class="whitSpace"><strong><?php the_sub_field('tituloapartados') ?></strong></p>
+					        	<p class="whitSpace"><?php the_sub_field('apartados') ?></p>
+					        		<?php 
+									if( have_rows('pdf') ):
+									  while ( have_rows('pdf') ) : the_row();
+									?>
+					        			<li class="icon-pdf"><a href="<?php the_sub_field('urlarchivo') ?>"><?php the_sub_field('titulo') ?></a></li>
+					        		<?php
+									endwhile;
+									endif;
+									?>
+									<br>
+					        	<?php
 								endwhile;
 								endif;
 								?>
-								<br>
-				        	<?php
+					        </ul>
+					      </div>
+					    </div>
+					</div>
+				<?php  endif;	
+				 if( have_rows('preguntas') ): ?>
+					<div class="panel panel-default">
+					    <div class="panel-heading" role="tab" id="headingSix">
+					      <h4 class="panel-title">
+					        <a  class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="true" aria-controls="collapseSix" class="trigger collapsed">
+					          Preguntas Frecuentes
+					        	
+					        </a>
+					      </h4>
+					    </div>
+					    <div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSix">
+					      <div class="panel-body">
+					      	<?php 
+								if( have_rows('preguntas') ):
+								  while ( have_rows('preguntas') ) : the_row();
+								?>
+					      	<h3><?php the_sub_field('pregunta') ?></h3>
+					      	<p><?php the_sub_field('respuesta') ?></p>
+
+					      	<?php
 							endwhile;
 							endif;
 							?>
-				        </ul>
-				      </div>
-				    </div>
-				</div>
-				<div class="panel panel-default">
-				    <div class="panel-heading" role="tab" id="headingSix">
-				      <h4 class="panel-title">
-				        <a  class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="true" aria-controls="collapseSix" class="trigger collapsed">
-				          Preguntas Frecuentes
-				        	
-				        </a>
-				      </h4>
-				    </div>
-				    <div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSix">
-				      <div class="panel-body">
-				      	<?php 
-							if( have_rows('preguntas') ):
-							  while ( have_rows('preguntas') ) : the_row();
-							?>
-				      	<h3><?php the_sub_field('pregunta') ?></h3>
-				      	<p><?php the_sub_field('respuesta') ?></p>
-
-				      	<?php
-						endwhile;
-						endif;
-						?>
-				      </div>
-				    </div>
-				</div>
-
+					      </div>
+					    </div>
+					</div>
+				<?php  endif; ?>
 				<div class="panel panel-default">
 					  <div class="panel-body">
 					  	<h2>AutoAlerta Bancomer</h2>
