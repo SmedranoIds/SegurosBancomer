@@ -61,7 +61,7 @@ get_header(); ?>
 					  </div>
 					</div>
 
-					<?php 
+					<?php
 					if( have_rows('cuadrosegurosblancos') ):
 					  while ( have_rows('cuadrosegurosblancos') ) : the_row(); 
 					?>

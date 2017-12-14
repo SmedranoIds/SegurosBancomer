@@ -73,7 +73,7 @@ get_header(); ?>
 							  		</div>
 							  	</div>
 							  	<a class="cuadro", href="<?php the_sub_field('ligaproducto') ?>">
-							  		Detalle del producto
+							  		<?php the_sub_field('leyendaurl') ?>
 							  		<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
 								</a>
 							  </div>
