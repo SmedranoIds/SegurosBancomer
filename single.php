@@ -39,7 +39,13 @@ get_header(); ?>
 								<p class="descripcion"><?php the_field('descripcion'); ?></p>
 								<br>
 								<?php if(get_field('urlboton')): ?>
-									<a href="<?php the_field('urlboton') ?>"><button class="btn-primary boton-azul2">Cotiza ahora</button></a>
+									<a href="<?php the_field('urlboton') ?>"><button class="btn-primary boton-azul2"><?php the_field('leyendaboton') ?></button></a>
+								<?php endif;
+								if(get_field('urlboton2')): ?>
+									<br>
+									<br>
+									<br>
+									<a href="<?php the_field('urlboton2') ?>"><button class="btn-primary boton-azul2"><?php the_field('leyendabtn2') ?></button></a>
 								<?php endif; ?>
 							</div>
 							<div class="col-md-6 col-xs-12 text-center">
@@ -153,6 +159,33 @@ get_header(); ?>
 					      </div>
 					    </div>
 					</div>
+					<?php 
+		            if( have_rows('masinfo') ):
+						$a = 30;
+						if( have_rows('masinfo') ):
+						while ( have_rows('masinfo') ) : the_row(); 
+					?>
+					  <div class="panel panel-default">
+					    <div class="panel-heading" role="tab" id="heading<?php echo $a ?>">
+					      <h4 class="panel-title">
+					        <a class="<?php if($a != 0){?> collapsed <?php } ?>" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse<?php echo $a ?>" aria-expanded="true" aria-controls="collapse<?php echo $a ?>">
+					          <?php the_sub_field('titulo') ?>
+					        </a>
+					      </h4>
+					    </div>
+					    <div id="collapse<?php echo $a ?>" class="panel-collapse collapse <?php if($a === 0){?> in <?php } ?>" role="tabpanel" aria-labelledby="heading<?php echo $a ?>">
+					      <div class="panel-body">
+					        <?php the_sub_field('contenido') ?>
+					      </div>
+					    </div>
+					  </div>
+				  <?php
+					  	$a++;
+						endwhile;
+						endif;
+					endif;
+					?>
+
 				<?php  endif;	
 				 if( have_rows('preguntas') ): ?>
 					<div class="panel panel-default">
