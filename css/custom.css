@@ -171,6 +171,9 @@ a.chat {
     line-height: 25px;
     text-decoration: none;
 }
+.compu {
+    background-position: -168px -425px;
+}
 .bordeCuadros {
     border: 1px solid #dde3ea;
     border-color: #c5c5c5;

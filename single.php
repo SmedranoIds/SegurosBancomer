@@ -59,9 +59,27 @@ get_header(); ?>
 							  		<i class="icon chat"></i>
 							  		Chat
 							  	</a>
-							  	
 							  </div>
 							</div>
+								<?php
+							if( have_rows('cuadrochat2') ):
+								if( have_rows('cuadrochat2') ):
+								  while ( have_rows('cuadrochat2') ) : the_row(); 
+								?>
+									<div class="panel panel-default text-center">
+									  <div class="panel-body bordeCuadros">
+									  	<a class="chat posIcon", href="">
+									  		<i class="icon <?php the_sub_field('imgclase') ?>"></i>
+									  		<?php the_sub_field('titulo') ?>
+									  	</a>
+									  	
+									  </div>
+									</div>
+								<?php
+								  endwhile;
+								endif;
+							endif;
+								?>
 							<?php
 							if( have_rows('cuadroblanco') ):
 							  while ( have_rows('cuadroblanco') ) : the_row(); 
