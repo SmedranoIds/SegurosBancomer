@@ -230,6 +230,7 @@ function twentyfifteen_fonts_url() {
 
 	return $fonts_url;
 }
+
 endif;
 
 /**
@@ -405,3 +406,89 @@ require get_template_directory() . '/inc/template-tags.php';
  * @since Twenty Fifteen 1.0
  */
 require get_template_directory() . '/inc/customizer.php';
+
+// La función no será utilizada antes del 'init'.
+add_action( 'init', 'my_custom_init' );
+
+
+function my_custom_init() {
+        $labels = array(
+        'name' => _x( 'Empresas', 'post type general name' ),
+        'singular_name' => _x( 'Empresas', 'post type singular name' ),
+        'add_new' => _x( 'Añadir nuevo', 'empresas' ),
+        'add_new_item' => __( 'Añadir nuevo' ),
+        'edit_item' => __( 'Editar empresas' ),
+        'new_item' => __( 'Nuevo Empresas' ),
+        'view_item' => __( 'Ver Empresas' ),
+        'search_items' => __( 'Buscar Empresas' ),
+        'not_found' =>  __( 'No se han encontrado Empresas' ),
+        'not_found_in_trash' => __( 'No se han encontrado Empresas en la papelera' ),
+        'parent_item_colon' => ''
+    );
+
+    // Creamos un array para $args
+    $args = array( 'labels' => $labels,
+        'public' => true,
+        'publicly_queryable' => true,
+        'show_ui' => true,
+        'query_var' => true,
+        'rewrite' => true,
+        'capability_type' => 'post',
+        'hierarchical' => false,
+        'menu_position' => null,
+        'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments' )
+    );
+
+        register_post_type( 'empresas', $args );
+
+        $labels = array(
+		'name'                  => _x( 'Pymes', 'Post Type General Name', 'pymes' ),
+		'singular_name'         => _x( 'Pymes', 'Post Type Singular Name', 'pymes' ),
+		'menu_name'             => __( 'Pymes', 'pymes' ),
+		'name_admin_bar'        => __( 'Pymes', 'pymes' ),
+		'archives'              => __( 'Item Archives', 'pymes' ),
+		'attributes'            => __( 'Item Attributes', 'pymes' ),
+		'parent_item_colon'     => __( 'Parent Item:', 'pymes' ),
+		'all_items'             => __( 'All Items', 'pymes' ),
+		'add_new_item'          => __( 'Add New Item', 'pymes' ),
+		'add_new'               => __( 'Add New', 'pymes' ),
+		'new_item'              => __( 'New Item', 'pymes' ),
+		'edit_item'             => __( 'Edit Item', 'pymes' ),
+		'update_item'           => __( 'Update Item', 'pymes' ),
+		'view_item'             => __( 'View Item', 'pymes' ),
+		'view_items'            => __( 'View Items', 'pymes' ),
+		'search_items'          => __( 'Search Item', 'pymes' ),
+		'not_found'             => __( 'Not found', 'pymes' ),
+		'not_found_in_trash'    => __( 'Not found in Trash', 'pymes' ),
+		'featured_image'        => __( 'Featured Image', 'pymes' ),
+		'set_featured_image'    => __( 'Set featured image', 'pymes' ),
+		'remove_featured_image' => __( 'Remove featured image', 'pymes' ),
+		'use_featured_image'    => __( 'Use as featured image', 'pymes' ),
+		'insert_into_item'      => __( 'Insert into item', 'pymes' ),
+		'uploaded_to_this_item' => __( 'Uploaded to this item', 'pymes' ),
+		'items_list'            => __( 'Items list', 'pymes' ),
+		'items_list_navigation' => __( 'Items list navigation', 'pymes' ),
+		'filter_items_list'     => __( 'Filter items list', 'pymes' ),
+	);
+	$args = array(
+		'label'                 => __( 'Post Type', 'pymes' ),
+		'description'           => __( 'Post Type Description', 'pymes' ),
+		'labels'                => $labels,
+		'supports'              => array( 'title', 'editor' ),
+		'taxonomies'            => array( 'category', 'post_tag' ),
+		'hierarchical'          => false,
+		'public'                => true,
+		'show_ui'               => true,
+		'show_in_menu'          => true,
+		'menu_position'         => 5,
+		'show_in_admin_bar'     => true,
+		'show_in_nav_menus'     => true,
+		'can_export'            => true,
+		'has_archive'           => true,
+		'exclude_from_search'   => false,
+		'publicly_queryable'    => true,
+		'capability_type'       => 'page',
+	);
+
+        register_post_type( 'pymes', $args );
+}
